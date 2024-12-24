@@ -12,11 +12,23 @@
             height: 100vh;
             width: 100%;
         }
+        .copyrights {
+            position: fixed;
+            padding: 5px;
+            text-align: right;
+            right: 5px;
+            width: fit-content;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
     </style>
     <script src="https://js.arcgis.com/4.14/"></script>
 </head>
 <body>
-    <div id="viewMap"></div>
+    <div id="viewMap">
+        <div class="copyrights">&copy; Mohammed Yahia</div>
+    </div>
     <script>
         require(['esri/Map',
                  'esri/views/MapView',
