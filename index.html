@@ -4,43 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ESRI Basemap</title>
-</head>
-<style>
-     html,
-        body,
-        #viewMap {
-            padding:0;
+    <link rel="stylesheet" href="https://js.arcgis.com/4.14/esri/themes/light/main.css"/> 
+    <style>
+        html, body, #viewMap {
+            padding: 0;
             margin: 0;
             height: 100vh;
-            width: 100%;     
+            width: 100%;
         }
-</style>
-<link rel="stylesheet" href="https://js.arcgis.com/4.14/esri/themes/light/main.css"/> 
-<script src="https://js.arcgis.com/4.14/"></script>
-<script>
-require(['esri/Map',
-'esri/views/MapView',
-"esri/widgets/BasemapToggle",
- "esri/widgets/BasemapGallery"],
-function(Map,MapView,BasemapToggle, BasemapGallery){
-    var map=new Map({
-        basemap:'satellite'
-    })
-var view=new MapView({
-    container:'viewMap',
-    map:map,
-    zoom:13,
-    center:[32.522854, 15.508457]
-}); 
-//toogle Basemap
-var basemapToggle= new BasemapToggle({
-    view:view,
-    nextBasemap:'streets'
-});
-view.ui.add(basemapToggle,'bottom-right')
-});
-</script>
+    </style>
+    <script src="https://js.arcgis.com/4.14/"></script>
+</head>
 <body>
     <div id="viewMap"></div>
+    <script>
+        require(['esri/Map',
+                 'esri/views/MapView',
+                 'esri/widgets/BasemapToggle',
+                 'esri/widgets/Attribution'], 
+        function(Map, MapView, BasemapToggle, Attribution) {
+            // إنشاء الخريطة
+            var map = new Map({
+                basemap: 'hybrid'
+            });
+
+            // إنشاء العرض
+            var view = new MapView({
+                container: 'viewMap',
+                map: map,
+                zoom: 15,
+                center: [32.5253595, 15.6134524]
+            });
+
+            // إضافة أداة Attribution لعرض مصدر وتاريخ الصور
+            var attribution = new Attribution({
+                view: view
+            });
+            view.ui.add(attribution, "bottom-right");
+        });
+    </script>
 </body>
 </html>
